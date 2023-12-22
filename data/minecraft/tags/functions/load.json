@@ -1,6 +1,7 @@
 {
     "values": [
         "custom_bar:init",
-        "variable_icon:init"
+        "variable_icon:init",
+        "extra_health:init"
     ]
 }

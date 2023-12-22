@@ -3,7 +3,7 @@
 # レンダリング
 #
 
-# 引数
+# 引数を受け取る
     execute store result score %Length CustomBar_Calc run data get storage custom_bar: Arguments.Length 1
     execute store result score %DelimiterLength CustomBar_Calc run data get storage custom_bar: Arguments.DelimiterLength 1
     $scoreboard players operation %Value CustomBar_Calc = @s $(ScoreName)

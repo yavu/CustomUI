@@ -3,9 +3,9 @@
 # レンダリング
 #
 
-# 引数
+# 引数を受け取る
     execute store result score %FrameCount VariableIcon_Calc run data get storage variable_icon: Arguments.FrameCount 1
-$scoreboard players operation %Value VariableIcon_Calc = @s $(ScoreName)
+    $scoreboard players operation %Value VariableIcon_Calc = @s $(ScoreName)
     execute store result score %MaxValue VariableIcon_Calc run data get storage variable_icon: Arguments.MaxValue 1
     execute if score %MaxValue VariableIcon_Calc matches 0 run scoreboard players operation %MaxValue VariableIcon_Calc = %FrameCount VariableIcon_Calc
     data modify storage variable_icon: Conversion.Output set from storage variable_icon: Arguments.Output
