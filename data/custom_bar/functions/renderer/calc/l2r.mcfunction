@@ -11,7 +11,7 @@
     scoreboard players operation %EmptyStart CustomBar_Calc = %BarPercentage CustomBar_Calc
     scoreboard players operation %EmptyEnd CustomBar_Calc = %Length CustomBar_Calc
 
-# 補正
+# デリミタ分補正
     scoreboard players add %DelimiterLength CustomBar_Calc 1
     scoreboard players operation %FilledStart CustomBar_Calc *= %DelimiterLength CustomBar_Calc
     scoreboard players operation %FilledEnd CustomBar_Calc *= %DelimiterLength CustomBar_Calc

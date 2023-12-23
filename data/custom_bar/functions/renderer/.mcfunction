@@ -4,14 +4,16 @@
 #
 
 # 引数を受け取る
-    execute store result score %Length CustomBar_Calc run data get storage custom_bar: Arguments.Length 1
-    execute store result score %DelimiterLength CustomBar_Calc run data get storage custom_bar: Arguments.DelimiterLength 1
+    $data modify storage custom_bar: Arguments.FilledBaseText set value "$(FilledBaseText)"
+    $data modify storage custom_bar: Arguments.EmptyBaseText set value "$(EmptyBaseText)"
+    $scoreboard players set %Length CustomBar_Calc $(Length)
+    $scoreboard players set %DelimiterLength CustomBar_Calc $(DelimiterLength)
     $scoreboard players operation %Value CustomBar_Calc = @s $(ScoreName)
-    execute store result score %MaxValue CustomBar_Calc run data get storage custom_bar: Arguments.MaxValue 1
-    execute if score %MaxValue CustomBar_Calc matches 0 run scoreboard players operation %MaxValue CustomBar_Calc = %Length CustomBar_Calc
-    data modify storage custom_bar: Trim.Output set from storage custom_bar: Arguments.Output
+    $scoreboard players set %MaxValue CustomBar_Calc $(MaxValue)
+    $data modify storage custom_bar: Arguments.Reverse set value $(Reverse)
+    $data modify storage custom_bar: Trim.Output set value $(Output)
 
-# バーの目盛り割合を算出
+# 目盛りの位置を算出
     scoreboard players operation %BarPercentage CustomBar_Calc = %Length CustomBar_Calc
     scoreboard players operation %BarPercentage CustomBar_Calc *= %Value CustomBar_Calc
     scoreboard players operation %BarPercentage CustomBar_Calc /= %MaxValue CustomBar_Calc
@@ -29,6 +31,3 @@
     execute store result storage custom_bar: Trim.EmptyEnd int 1 run scoreboard players get %EmptyEnd CustomBar_Calc
     execute unless data storage custom_bar: Arguments{Reverse:true} run function custom_bar:renderer/trim/l2r with storage custom_bar: Trim
     execute if data storage custom_bar: Arguments{Reverse:true} run function custom_bar:renderer/trim/r2l with storage custom_bar: Trim
-
-# 引数のストレージをリセット
-    data remove storage custom_bar: Arguments
